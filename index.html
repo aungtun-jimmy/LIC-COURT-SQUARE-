@@ -1,68 +1,88 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>CSQ VIEWER PORTAL</title>
+    <title>CSQ - LIC COURT SQUARE PROJECT</title>
 
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #1e1e1e;
+            background-color: #0f172a;
             color: white;
-            text-align: center;
+            margin: 0;
         }
 
         h1 {
+            text-align: center;
             padding: 20px;
+            background-color: #1e293b;
+            margin: 0;
         }
 
-        .btn {
+        .container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            padding: 30px;
+        }
+
+        .card {
+            background-color: #1e293b;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .card h2 {
+            text-align: center;
+            border-bottom: 1px solid #334155;
+            padding-bottom: 10px;
+        }
+
+        .link {
             display: block;
-            background-color: #2d89ef;
+            background-color: #2563eb;
             color: white;
-            padding: 12px;
-            margin: 10px auto;
-            width: 250px;
             text-decoration: none;
+            padding: 8px;
+            margin: 8px 0;
+            text-align: center;
             border-radius: 6px;
-            font-weight: bold;
         }
 
-        .btn:hover {
-            background-color: #1b5fbd;
+        .link:hover {
+            background-color: #1d4ed8;
         }
     </style>
-
-    <script>
-        function checkPassword(category, link) {
-            var password = prompt("Enter password for " + category + ":");
-
-            if (category === "BRACKET" && password === "csq.ptsint") {
-                window.open(link, "_blank");
-            }
-            else if (category === "PANEL" && password === "csq.ptsint") {
-                window.open(link, "_blank");
-            }
-            else {
-                alert("Wrong password!");
-            }
-        }
-    </script>
-
 </head>
 
 <body>
 
-    <h1>"CSQ" LIC COURT SQUARE PROJECT</h1>
+<h1>CSQ - LIC COURT SQUARE PROJECT</h1>
 
-    <h2>FLOOR BRACKET</h2>
-    <a class="btn" href="#" onclick="checkPassword('BRACKET','BRACKET_L01_LINK')">LEVEL - 01</a>
-    <a class="btn" href="#" onclick="checkPassword('BRACKET','BRACKET_L02_LINK')">LEVEL - 02</a>
-    <a class="btn" href="#" onclick="checkPassword('BRACKET','BRACKET_L03_LINK')">LEVEL - 03</a>
+<div class="container">
 
-    <h2>FACADE PANEL</h2>
-    <a class="btn" href="#" onclick="checkPassword('PANEL','PANEL_L01_LINK')">LEVEL - 01</a>
-    <a class="btn" href="#" onclick="checkPassword('PANEL','PANEL_L02_LINK')">LEVEL - 02</a>
-    <a class="btn" href="#" onclick="checkPassword('PANEL','PANEL_L03_LINK')">LEVEL - 03</a>
+    <div class="card">
+        <h2>FLOOR BRACKET</h2>
+        <a class="link" href="#">LEVEL 01</a>
+        <a class="link" href="#">LEVEL 02</a>
+        <a class="link" href="#">LEVEL 03</a>
+    </div>
+
+    <div class="card">
+        <h2>SHELL MODEL</h2>
+        <a class="link" href="#">Shell Model</a>
+    </div>
+
+    <div class="card">
+        <h2>STRUCTURE MODEL</h2>
+        <a class="link" href="#">Structure Model</a>
+    </div>
+
+    <div class="card">
+        <h2>COMBINE MODEL</h2>
+        <a class="link" href="#">Combine Model</a>
+    </div>
+
+</div>
 
 </body>
 </html>
