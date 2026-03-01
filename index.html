@@ -7,8 +7,37 @@
         body {
             font-family: Arial, sans-serif;
             background-color: #0f172a;
-            color: white;
             margin: 0;
+            color: white;
+        }
+
+        .login-box {
+            text-align: center;
+            margin-top: 150px;
+        }
+
+        input {
+            padding: 10px;
+            width: 250px;
+            border-radius: 5px;
+            border: none;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #1d4ed8;
+        }
+
+        .portal {
+            display: none;
         }
 
         h1 {
@@ -37,24 +66,52 @@
             padding-bottom: 10px;
         }
 
-        .link {
+        .link-btn {
             display: block;
             background-color: #2563eb;
-            color: white;
-            text-decoration: none;
             padding: 8px;
             margin: 8px 0;
             text-align: center;
             border-radius: 6px;
+            cursor: pointer;
         }
 
-        .link:hover {
+        .link-btn:hover {
             background-color: #1d4ed8;
         }
     </style>
+
+    <script>
+        function login() {
+            var password = document.getElementById("password").value;
+
+            if (password === "csq.pts.int") {
+                document.getElementById("loginPage").style.display = "none";
+                document.getElementById("portalPage").style.display = "block";
+            } else {
+                alert("Wrong Password");
+            }
+        }
+
+        function openLink(link) {
+            window.open(link, "_blank");
+        }
+    </script>
+
 </head>
 
 <body>
+
+<!-- LOGIN PAGE -->
+<div id="loginPage" class="login-box">
+    <h2>CSQ Secure Viewer Access</h2>
+    <input type="password" id="password" placeholder="Enter Password">
+    <br><br>
+    <button onclick="login()">Enter</button>
+</div>
+
+<!-- PORTAL PAGE -->
+<div id="portalPage" class="portal">
 
 <h1>CSQ - LIC COURT SQUARE PROJECT</h1>
 
@@ -62,25 +119,27 @@
 
     <div class="card">
         <h2>FLOOR BRACKET</h2>
-        <a class="link" href="#">LEVEL 01</a>
-        <a class="link" href="#">LEVEL 02</a>
-        <a class="link" href="#">LEVEL 03</a>
+        <div class="link-btn" onclick="openLink('PUT_LEVEL01_LINK_HERE')">LEVEL 01</div>
+        <div class="link-btn" onclick="openLink('PUT_LEVEL02_LINK_HERE')">LEVEL 02</div>
+        <div class="link-btn" onclick="openLink('PUT_LEVEL03_LINK_HERE')">LEVEL 03</div>
     </div>
 
     <div class="card">
         <h2>SHELL MODEL</h2>
-        <a class="link" href="#">Shell Model</a>
+        <div class="link-btn" onclick="openLink('PUT_SHELL_LINK_HERE')">Shell Model</div>
     </div>
 
     <div class="card">
         <h2>STRUCTURE MODEL</h2>
-        <a class="link" href="#">Structure Model</a>
+        <div class="link-btn" onclick="openLink('PUT_STRUCTURE_LINK_HERE')">Structure Model</div>
     </div>
 
     <div class="card">
         <h2>COMBINE MODEL</h2>
-        <a class="link" href="#">Combine Model</a>
+        <div class="link-btn" onclick="openLink('PUT_COMBINE_LINK_HERE')">Combine Model</div>
     </div>
+
+</div>
 
 </div>
 
