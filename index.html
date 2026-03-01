@@ -9,24 +9,10 @@
             background-color: #1e1e1e;
             color: white;
             text-align: center;
-            margin: 0;
-            padding: 0;
         }
 
         h1 {
-            background-color: #111;
             padding: 20px;
-            margin: 0;
-        }
-
-        h2 {
-            margin-top: 40px;
-            color: #00bfff;
-        }
-
-        .section {
-            margin: 20px auto;
-            width: 300px;
         }
 
         .btn {
@@ -34,48 +20,49 @@
             background-color: #2d89ef;
             color: white;
             padding: 12px;
-            margin: 10px 0;
+            margin: 10px auto;
+            width: 250px;
             text-decoration: none;
             border-radius: 6px;
             font-weight: bold;
-            transition: 0.3s;
         }
 
         .btn:hover {
             background-color: #1b5fbd;
         }
-
-        footer {
-            margin-top: 50px;
-            padding: 15px;
-            background-color: #111;
-            font-size: 12px;
-            color: #aaa;
-        }
     </style>
+
+    <script>
+        function checkPassword(category, link) {
+            var password = prompt("Enter password for " + category + ":");
+
+            if (category === "BRACKET" && password === "csq.ptsint") {
+                window.open(link, "_blank");
+            }
+            else if (category === "PANEL" && password === "csq.ptsint") {
+                window.open(link, "_blank");
+            }
+            else {
+                alert("Wrong password!");
+            }
+        }
+    </script>
+
 </head>
 
 <body>
 
-    <h1>CSQ FLOOR BRACKET & FACADE PANEL VIEWER</h1>
+    <h1>"CSQ" LIC COURT SQUARE PROJECT</h1>
 
     <h2>FLOOR BRACKET</h2>
-    <div class="section">
-        <a class="btn" href="BRACKET_L01_LINK" target="_blank">LEVEL - 01</a>
-        <a class="btn" href="BRACKET_L02_LINK" target="_blank">LEVEL - 02</a>
-        <a class="btn" href="BRACKET_L03_LINK" target="_blank">LEVEL - 03</a>
-    </div>
+    <a class="btn" href="#" onclick="checkPassword('BRACKET','BRACKET_L01_LINK')">LEVEL - 01</a>
+    <a class="btn" href="#" onclick="checkPassword('BRACKET','BRACKET_L02_LINK')">LEVEL - 02</a>
+    <a class="btn" href="#" onclick="checkPassword('BRACKET','BRACKET_L03_LINK')">LEVEL - 03</a>
 
     <h2>FACADE PANEL</h2>
-    <div class="section">
-        <a class="btn" href="PANEL_L01_LINK" target="_blank">LEVEL - 01</a>
-        <a class="btn" href="PANEL_L02_LINK" target="_blank">LEVEL - 02</a>
-        <a class="btn" href="PANEL_L03_LINK" target="_blank">LEVEL - 03</a>
-    </div>
-
-    <footer>
-        CSQ Project | Rev 01 | Updated 2026
-    </footer>
+    <a class="btn" href="#" onclick="checkPassword('PANEL','PANEL_L01_LINK')">LEVEL - 01</a>
+    <a class="btn" href="#" onclick="checkPassword('PANEL','PANEL_L02_LINK')">LEVEL - 02</a>
+    <a class="btn" href="#" onclick="checkPassword('PANEL','PANEL_L03_LINK')">LEVEL - 03</a>
 
 </body>
 </html>
