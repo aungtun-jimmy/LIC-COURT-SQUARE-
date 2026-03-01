@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>CSQ - LIC COURT SQUARE PROJECT</title>
+    <title>LIC COURT SQUARE - CSQ Portal</title>
 
     <style>
         body {
@@ -11,37 +11,73 @@
             color: white;
         }
 
-        /* COVER IMAGE */
+        /* ===== COVER SECTION ===== */
         .cover {
-            height: 300px;
-            background: url('cover.jpg') center/cover no-repeat;
+            height: 400px;
+            background: url('cover.png') center/cover no-repeat;
+            position: relative;
             display: flex;
             align-items: center;
             justify-content: center;
-            background-blend-mode: overlay;
-            background-color: rgba(0,0,0,0.6);
         }
 
-        .cover h1 {
-            font-size: 36px;
+        .cover::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.55);
+        }
+
+        .project-title {
+            position: relative;
+            text-align: center;
+            z-index: 2;
+        }
+
+        .project-title h1 {
+            margin: 0;
+            font-size: 40px;
             letter-spacing: 2px;
         }
 
-        /* LOGIN BOX */
+        .project-title p {
+            margin-top: 10px;
+            font-size: 18px;
+        }
+
+        /* ===== LOGO ===== */
+        .logo {
+            position: absolute;
+            top: 20px;
+            left: 30px;
+            z-index: 3;
+        }
+
+        .logo img {
+            height: 60px;
+            background: white;
+            padding: 5px;
+            border-radius: 5px;
+        }
+
+        /* ===== LOGIN SECTION ===== */
         .login-box {
             text-align: center;
-            margin: 40px;
+            padding: 40px;
         }
 
         input {
-            padding: 10px;
-            width: 250px;
+            padding: 12px;
+            width: 260px;
             border-radius: 5px;
             border: none;
         }
 
         button {
-            padding: 10px 20px;
+            padding: 12px 25px;
             background-color: #2563eb;
             color: white;
             border: none;
@@ -53,39 +89,39 @@
             background-color: #1d4ed8;
         }
 
+        /* ===== PORTAL SECTION ===== */
         .portal {
             display: none;
-            padding: 40px;
+            padding: 50px;
         }
 
         .container {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            margin-top: 40px;
+            gap: 50px;
         }
 
         .card {
             background-color: #1e293b;
-            padding: 25px;
+            padding: 30px;
             border-radius: 12px;
         }
 
         .card h2 {
             text-align: center;
-            margin-bottom: 20px;
             border-bottom: 1px solid #334155;
-            padding-bottom: 10px;
+            padding-bottom: 15px;
         }
 
         .link-btn {
             display: block;
             background-color: #2563eb;
-            padding: 10px;
-            margin: 10px 0;
+            padding: 12px;
+            margin: 12px 0;
             text-align: center;
             border-radius: 6px;
             cursor: pointer;
+            font-weight: bold;
         }
 
         .link-btn:hover {
@@ -114,12 +150,21 @@
 
 <body>
 
-<!-- COVER IMAGE -->
+<!-- ===== COVER ===== -->
 <div class="cover">
-    <h1>CSQ - LIC COURT SQUARE PROJECT</h1>
+
+    <div class="logo">
+        <img src="logo.jpg" alt="Company Logo">
+    </div>
+
+    <div class="project-title">
+        <h1>LIC COURT SQUARE</h1>
+        <p>45-03 23RD STREET, QUEENS, NY</p>
+    </div>
+
 </div>
 
-<!-- LOGIN SECTION -->
+<!-- ===== LOGIN ===== -->
 <div id="loginSection" class="login-box">
     <h2>Secure Project Access</h2>
     <input type="password" id="password" placeholder="Enter Password">
@@ -127,7 +172,7 @@
     <button onclick="login()">Enter</button>
 </div>
 
-<!-- PORTAL SECTION -->
+<!-- ===== PORTAL ===== -->
 <div id="portalSection" class="portal">
 
     <div class="container">
