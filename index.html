@@ -106,6 +106,12 @@
         .link-btn:hover {
             background-color: #1d4ed8;
         }
+        .no-link {
+            color: #f87171; /* red text for clarity */
+            font-size: 14px;
+            text-align: center;
+            margin-bottom: 10px;
+        }
 
         /* Responsive tweak: one column on small screens */
         @media (max-width: 768px) {
@@ -143,7 +149,7 @@
 
 <script>
 async function loadData() {
-    // Replace with your published Google Sheet CSV link
+    // Using your published Google Sheet CSV link
     const url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSvVKOko1YWaiKsOoMDcmJi3TTVsUN4KgpUyDvpzK1fdBBqV_X4YjLa7vcBXLIiDPVcujqp9cCK7125/pub?output=csv"; 
 
     const response = await fetch(url);
@@ -177,13 +183,19 @@ async function loadData() {
                 label += label ? " – " + item.branch : item.branch;
             }
             btn.textContent = label || "Link";
-            btn.onclick = () => {
-                if (item.link && item.link !== "(paste link here)") {
-                    window.open(item.link, "_blank");
-                } else {
-                    alert("No link provided yet.");
-                }
-            };
+
+            if (item.link && item.link !== "(paste link here)") {
+                btn.onclick = () => window.open(item.link, "_blank");
+            } else {
+                // Show "No link yet" message
+                const msg = document.createElement("div");
+                msg.className = "no-link";
+                msg.textContent = "No link yet";
+                card.appendChild(msg);
+                btn.style.backgroundColor = "#475569"; // greyed out
+                btn.style.cursor = "not-allowed";
+            }
+
             card.appendChild(btn);
         });
 
