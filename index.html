@@ -177,3 +177,44 @@
 
 </body>
 </html>
+<script>
+async function loadData() {
+    const url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSvVKOko1YWaiKsOoMDcmJi3TTVsUN4KgpUyDvpzK1fdBBqV_X4YjLa7vcBXLIiDPVcujqp9cCK7125/pub?output=csv"; // replace with your Google Sheet CSV link
+    const response = await fetch(url);
+    const text = await response.text();
+
+    // Parse CSV
+    const rows = text.split("\n").map(r => r.split(","));
+    const headers = rows[0];
+    const data = rows.slice(1);
+
+    // Example: build buttons dynamically
+    const portal = document.getElementById("portalSection");
+    portal.innerHTML = ""; // clear existing
+
+    // Group by Category
+    const categories = {};
+    data.forEach(row => {
+        const [category, sub, branch, link] = row;
+        if (!categories[category]) categories[category] = [];
+        categories[category].push({ sub, branch, link });
+    });
+
+    // Render cards
+    for (const category in categories) {
+        const card = document.createElement("div");
+        card.className = "card";
+        card.innerHTML = `<h2>${category}</h2>`;
+        categories[category].forEach(item => {
+            const btn = document.createElement("div");
+            btn.className = "link-btn";
+            btn.textContent = item.sub !== "–" ? `${item.sub}` : item.branch;
+            btn.onclick = () => window.open(item.link, "_blank");
+            card.appendChild(btn);
+        });
+        portal.appendChild(card);
+    }
+}
+
+loadData();
+</script>
