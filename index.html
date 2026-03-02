@@ -160,7 +160,7 @@ async function loadData() {
     data.forEach(row => {
         if (row.length < 4) return; // skip incomplete rows
         const [category, sub, branch, link] = row;
-        if (!category) return; // skip empty
+        if (!category) return; // skip empty category rows
         if (!categories[category]) categories[category] = [];
         categories[category].push({ sub, branch, link });
     });
