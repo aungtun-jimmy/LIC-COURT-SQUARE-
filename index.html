@@ -2,7 +2,6 @@
 <html>
 <head>
     <title>LIC COURT SQUARE - CSQ Portal</title>
-
     <style>
         body {
             margin: 0;
@@ -30,9 +29,9 @@
             color: #2563eb;
         }
 
-        /* ===== COVER SECTION ===== */
+        /* ===== COVER ===== */
         .cover {
-            height: 400px;
+            height: 300px;
             background: url('cover.png') center/cover no-repeat;
             position: relative;
             display: flex;
@@ -74,38 +73,14 @@
             border-radius: 5px;
         }
 
-        /* ===== LOGIN SECTION ===== */
-        .login-box {
-            text-align: center;
-            padding: 40px;
-        }
-        input {
-            padding: 12px;
-            width: 260px;
-            border-radius: 5px;
-            border: none;
-        }
-        button {
-            padding: 12px 25px;
-            background-color: #2563eb;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #1d4ed8;
-        }
-
         /* ===== PORTAL SECTION ===== */
         .portal {
-            display: none;
             padding: 50px;
         }
         .container {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 50px;
+            gap: 40px;
         }
         .card {
             background-color: #1e293b;
@@ -135,32 +110,9 @@
         .link-btn:hover {
             background-color: #1d4ed8;
         }
-
-        /* ===== PROGRESS BAR ===== */
-        .progress {
-            background-color: #334155;
-            border-radius: 6px;
-            overflow: hidden;
-            height: 20px;
-            margin-top: 10px;
-        }
-        .progress-bar {
-            background-color: #22c55e;
-            height: 100%;
-            transition: width 0.5s ease;
-        }
     </style>
 
     <script>
-        function login() {
-            var password = document.getElementById("password").value;
-            if (password === "csq.pts.int") {
-                document.getElementById("loginSection").style.display = "none";
-                document.getElementById("portalSection").style.display = "block";
-            } else {
-                alert("Wrong Password");
-            }
-        }
         function openLink(link) {
             window.open(link, "_blank");
         }
@@ -172,8 +124,9 @@
 <!-- ===== NAVBAR ===== -->
 <nav>
     <a href="#floor">Floor Bracket</a>
-    <a href="#facade">Facade</a>
-    <a href="#progress">Progress</a>
+    <a href="#progress">Fabrication Progress</a>
+    <a href="#bim-cmi">BIM Model - CMI</a>
+    <a href="#bim-pts">BIM Model - PTS</a>
 </nav>
 
 <!-- ===== COVER ===== -->
@@ -187,14 +140,6 @@
     </div>
 </div>
 
-<!-- ===== LOGIN ===== -->
-<div id="loginSection" class="login-box">
-    <h2>Secure Project Access</h2>
-    <input type="password" id="password" placeholder="Enter Password">
-    <br><br>
-    <button onclick="login()">Enter</button>
-</div>
-
 <!-- ===== PORTAL ===== -->
 <div id="portalSection" class="portal">
 
@@ -204,26 +149,32 @@
         <div class="card" id="floor">
             <h2>FLOOR BRACKET</h2>
             <div class="link-btn" onclick="openLink('PUT_LEVEL01_LINK')">LEVEL 01</div>
-            <div class="progress"><div class="progress-bar" style="width:60%"></div></div>
-
             <div class="link-btn" onclick="openLink('PUT_LEVEL02_LINK')">LEVEL 02</div>
-            <div class="progress"><div class="progress-bar" style="width:20%"></div></div>
-
             <div class="link-btn" onclick="openLink('PUT_LEVEL03_LINK')">LEVEL 03</div>
-            <div class="progress"><div class="progress-bar" style="width:100%"></div></div>
         </div>
 
-        <!-- FACADE -->
-        <div class="card" id="facade">
-            <h2>FACADE</h2>
-            <div class="link-btn" onclick="openLink('PUT_FACADE_LEVEL01_LINK')">LEVEL 01</div>
-            <div class="progress"><div class="progress-bar" style="width:40%"></div></div>
+        <!-- FABRICATION PROGRESS -->
+        <div class="card" id="progress">
+            <h2>FABRICATION PROGRESS</h2>
+            <div class="link-btn" onclick="openLink('PUT_FAB_LEVEL01_LINK')">LEVEL 01</div>
+            <div class="link-btn" onclick="openLink('PUT_FAB_LEVEL02_LINK')">LEVEL 02</div>
+            <div class="link-btn" onclick="openLink('PUT_FAB_LEVEL03_LINK')">LEVEL 03</div>
+        </div>
 
-            <div class="link-btn" onclick="openLink('PUT_FACADE_LEVEL02_LINK')">LEVEL 02</div>
-            <div class="progress"><div class="progress-bar" style="width:10%"></div></div>
+        <!-- BIM MODEL - CMI -->
+        <div class="card" id="bim-cmi">
+            <h2>BIM MODEL - CMI</h2>
+            <div class="link-btn" onclick="openLink('PUT_CMI_ARCH_LINK')">Architecture</div>
+            <div class="link-btn" onclick="openLink('PUT_CMI_SHELL_LINK')">Shell</div>
+            <div class="link-btn" onclick="openLink('PUT_CMI_STRUCT_LINK')">Structure</div>
+        </div>
 
-            <div class="link-btn" onclick="openLink('PUT_FACADE_LEVEL03_LINK')">LEVEL 03</div>
-            <div class="progress"><div class="progress-bar" style="width:80%"></div></div>
+        <!-- BIM MODEL - PTS -->
+        <div class="card" id="bim-pts">
+            <h2>BIM MODEL - PTS</h2>
+            <div class="link-btn" onclick="openLink('PUT_PTS_ARCH_LINK')">Architecture</div>
+            <div class="link-btn" onclick="openLink('PUT_PTS_SHELL_LINK')">Shell</div>
+            <div class="link-btn" onclick="openLink('PUT_PTS_STRUCT_LINK')">Structure</div>
         </div>
 
     </div>
