@@ -174,29 +174,32 @@ async function loadData() {
         card.id = category.toLowerCase().replace(/\s+/g, "-");
         card.innerHTML = `<h2>${category}</h2>`;
 
-        categories[category].forEach(item => {
-            const btn = document.createElement("div");
-            btn.className = "link-btn";
-            let label = "";
-            if (item.sub && item.sub !== "–") label += item.sub;
-            if (item.branch && item.branch !== "–") {
-                label += label ? " – " + item.branch : item.branch;
-            }
-            btn.textContent = label || "Link";
+categories[category].forEach(item => {
+    const btn = document.createElement("div");
+    btn.className = "link-btn";
+    let label = "";
+    if (item.sub && item.sub !== "–") label += item.sub;
+    if (item.branch && item.branch !== "–") {
+        label += label ? " – " + item.branch : item.branch;
+    }
+    btn.textContent = label || "Link";
 
-            if (item.link && item.link !== "(paste link here)") {
-                btn.onclick = () => window.open(item.link, "_blank");
-            } else {
-                // Show "No link yet" message
-                const msg = document.createElement("div");
-                msg.className = "no-link";
-                msg.textContent = "No link yet";
-                card.appendChild(msg);
-                btn.style.backgroundColor = "#475569"; // greyed out
-                btn.style.cursor = "not-allowed";
-            }
+    if (item.link && item.link.trim() !== "" && item.link.indexOf("paste link here") === -1) {
+        // Valid link → make it clickable
+        btn.onclick = () => window.open(item.link, "_blank");
+    } else {
+        // No link → show message and disable button
+        const msg = document.createElement("div");
+        msg.className = "no-link";
+        msg.textContent = "No link yet";
+        card.appendChild(msg);
+        btn.style.backgroundColor = "#475569"; // greyed out
+        btn.style.cursor = "not-allowed";
+    }
 
-            card.appendChild(btn);
+    card.appendChild(btn);
+});
+
         });
 
         container.appendChild(card);
