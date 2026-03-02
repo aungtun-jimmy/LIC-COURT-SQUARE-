@@ -10,7 +10,6 @@
             color: white;
         }
 
-        /* ===== NAVBAR ===== */
         nav {
             background-color: #1e293b;
             padding: 15px;
@@ -29,7 +28,6 @@
             color: #2563eb;
         }
 
-        /* ===== COVER ===== */
         .cover {
             height: 300px;
             background: url('cover.png') center/cover no-repeat;
@@ -72,7 +70,6 @@
             border-radius: 5px;
         }
 
-        /* ===== PORTAL ===== */
         .portal {
             padding: 50px;
         }
@@ -114,7 +111,6 @@
 
 <body>
 
-<!-- ===== NAVBAR ===== -->
 <nav>
     <a href="#floor">Floor Bracket</a>
     <a href="#progress">Fabrication Progress</a>
@@ -122,7 +118,6 @@
     <a href="#bim-pts">BIM Model - PTS</a>
 </nav>
 
-<!-- ===== COVER ===== -->
 <div class="cover">
     <div class="logo">
         <img src="logo.jpg" alt="Company Logo">
@@ -133,7 +128,6 @@
     </div>
 </div>
 
-<!-- ===== PORTAL ===== -->
 <div id="portalSection" class="portal">
     <div class="container" id="cardContainer">
         <!-- Cards will be injected here -->
@@ -142,18 +136,15 @@
 
 <script>
 async function loadData() {
-    // STEP 1: Replace with your published Google Sheet CSV link
+    // Replace with your published Google Sheet CSV link
     const url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSvVKOko1YWaiKsOoMDcmJi3TTVsUN4KgpUyDvpzK1fdBBqV_X4YjLa7vcBXLIiDPVcujqp9cCK7125/pub?output=csv"; 
 
     const response = await fetch(url);
     const text = await response.text();
 
-    // STEP 2: Parse CSV
     const rows = text.split("\n").map(r => r.split(","));
-    const headers = rows[0];
     const data = rows.slice(1);
 
-    // STEP 3: Group by Category
     const categories = {};
     data.forEach(row => {
         const [category, sub, branch, link] = row;
@@ -161,7 +152,6 @@ async function loadData() {
         categories[category].push({ sub, branch, link });
     });
 
-    // STEP 4: Render cards into container
     const container = document.getElementById("cardContainer");
     container.innerHTML = "";
 
@@ -174,7 +164,6 @@ async function loadData() {
         categories[category].forEach(item => {
             const btn = document.createElement("div");
             btn.className = "link-btn";
-            // Show Sub-Category + Branch together if both exist
             let label = "";
             if (item.sub && item.sub !== "–") label += item.sub;
             if (item.branch && item.branch !== "–") {
