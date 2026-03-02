@@ -10,6 +10,7 @@
             color: white;
         }
 
+        /* ===== NAVBAR ===== */
         nav {
             background-color: #1e293b;
             padding: 15px;
@@ -28,6 +29,7 @@
             color: #2563eb;
         }
 
+        /* ===== COVER ===== */
         .cover {
             height: 300px;
             background: url('cover.png') center/cover no-repeat;
@@ -70,12 +72,13 @@
             border-radius: 5px;
         }
 
+        /* ===== PORTAL ===== */
         .portal {
             padding: 50px;
         }
         .container {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1fr 1fr; /* two columns */
             gap: 40px;
         }
         .card {
@@ -107,16 +110,11 @@
             background-color: #1d4ed8;
         }
     </style>
-
-    <script>
-        function openLink(link) {
-            window.open(link, "_blank");
-        }
-    </script>
 </head>
 
 <body>
 
+<!-- ===== NAVBAR ===== -->
 <nav>
     <a href="#floor">Floor Bracket</a>
     <a href="#progress">Fabrication Progress</a>
@@ -124,6 +122,7 @@
     <a href="#bim-pts">BIM Model - PTS</a>
 </nav>
 
+<!-- ===== COVER ===== -->
 <div class="cover">
     <div class="logo">
         <img src="logo.jpg" alt="Company Logo">
@@ -134,65 +133,27 @@
     </div>
 </div>
 
+<!-- ===== PORTAL ===== -->
 <div id="portalSection" class="portal">
-    <div class="container">
-
-        <!-- FLOOR BRACKET -->
-        <div class="card" id="floor">
-            <h2>FLOOR BRACKET</h2>
-            <div class="link-btn" onclick="openLink('(paste link here)')">Level 02</div>
-            <div class="link-btn" onclick="openLink('(paste link here)')">Level 03</div>
-            <div class="link-btn" onclick="openLink('(paste link here)')">Level 04</div>
-            <div class="link-btn" onclick="openLink('(paste link here)')">Level 5M</div>
-            <div class="link-btn" onclick="openLink('(paste link here)')">Level 05</div>
-            <div class="link-btn" onclick="openLink('(paste link here)')">Level 06</div>
-        </div>
-
-        <!-- FABRICATION PROGRESS -->
-        <div class="card" id="progress">
-            <h2>FABRICATION PROGRESS</h2>
-            <div class="link-btn" onclick="openLink('(paste link here)')">Level 01</div>
-            <div class="link-btn" onclick="openLink('(paste link here)')">Level 02</div>
-            <div class="link-btn" onclick="openLink('(paste link here)')">Level 03</div>
-        </div>
-
-        <!-- BIM MODEL - CMI -->
-        <div class="card" id="bim-cmi">
-            <h2>BIM MODEL - CMI</h2>
-            <div class="link-btn" onclick="openLink('(paste link here)')">ARC-MAIN</div>
-            <div class="link-btn" onclick="openLink('https://autode.sk/4acDfSL')">Shell</div>
-            <div class="link-btn" onclick="openLink('https://autode.sk/4aeW49h')">Structure</div>
-        </div>
-
-        <!-- BIM MODEL - PTS -->
-        <div class="card" id="bim-pts">
-            <h2>BIM MODEL - PTS</h2>
-            <div class="link-btn" onclick="openLink('(paste link here)')">Podium</div>
-            <div class="link-btn" onclick="openLink('(paste link here)')">Tower</div>
-            <div class="link-btn" onclick="openLink('(paste link here)')">Combined Model</div>
-        </div>
-
+    <div class="container" id="cardContainer">
+        <!-- Cards will be injected here -->
     </div>
 </div>
 
-</body>
-</html>
 <script>
 async function loadData() {
-    const url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSvVKOko1YWaiKsOoMDcmJi3TTVsUN4KgpUyDvpzK1fdBBqV_X4YjLa7vcBXLIiDPVcujqp9cCK7125/pub?output=csv"; // replace with your Google Sheet CSV link
+    // STEP 1: Replace this with your published Google Sheet CSV link
+    const url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSvVKOko1YWaiKsOoMDcmJi3TTVsUN4KgpUyDvpzK1fdBBqV_X4YjLa7vcBXLIiDPVcujqp9cCK7125/pub?output=csv"; 
+
     const response = await fetch(url);
     const text = await response.text();
 
-    // Parse CSV
+    // STEP 2: Parse CSV
     const rows = text.split("\n").map(r => r.split(","));
     const headers = rows[0];
     const data = rows.slice(1);
 
-    // Example: build buttons dynamically
-    const portal = document.getElementById("portalSection");
-    portal.innerHTML = ""; // clear existing
-
-    // Group by Category
+    // STEP 3: Group by Category
     const categories = {};
     data.forEach(row => {
         const [category, sub, branch, link] = row;
@@ -200,21 +161,42 @@ async function loadData() {
         categories[category].push({ sub, branch, link });
     });
 
-    // Render cards
+    // STEP 4: Render cards into container
+    const container = document.getElementById("cardContainer");
+    container.innerHTML = "";
+
     for (const category in categories) {
         const card = document.createElement("div");
         card.className = "card";
+        card.id = category.toLowerCase().replace(/\s+/g, "-");
         card.innerHTML = `<h2>${category}</h2>`;
+
         categories[category].forEach(item => {
             const btn = document.createElement("div");
             btn.className = "link-btn";
-            btn.textContent = item.sub !== "–" ? `${item.sub}` : item.branch;
-            btn.onclick = () => window.open(item.link, "_blank");
+            // Show Sub-Category + Branch together if both exist
+            let label = "";
+            if (item.sub && item.sub !== "–") label += item.sub;
+            if (item.branch && item.branch !== "–") {
+                label += label ? " – " + item.branch : item.branch;
+            }
+            btn.textContent = label || "Link";
+            btn.onclick = () => {
+                if (item.link && item.link !== "(paste link here)") {
+                    window.open(item.link, "_blank");
+                } else {
+                    alert("No link provided yet.");
+                }
+            };
             card.appendChild(btn);
         });
-        portal.appendChild(card);
+
+        container.appendChild(card);
     }
 }
 
 loadData();
 </script>
+
+</body>
+</html>
