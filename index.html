@@ -106,6 +106,13 @@
         .link-btn:hover {
             background-color: #1d4ed8;
         }
+
+        /* Responsive tweak: one column on small screens */
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
 
