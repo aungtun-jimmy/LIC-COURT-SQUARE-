@@ -11,6 +11,25 @@
             color: white;
         }
 
+        /* ===== NAVBAR ===== */
+        nav {
+            background-color: #1e293b;
+            padding: 15px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        nav a:hover {
+            color: #2563eb;
+        }
+
         /* ===== COVER SECTION ===== */
         .cover {
             height: 400px;
@@ -20,29 +39,22 @@
             align-items: center;
             justify-content: center;
         }
-
         .cover::after {
             content: "";
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
+            top: 0; left: 0; right: 0; bottom: 0;
             background: rgba(0,0,0,0.55);
         }
-
         .project-title {
             position: relative;
             text-align: center;
             z-index: 2;
         }
-
         .project-title h1 {
             margin: 0;
             font-size: 40px;
             letter-spacing: 2px;
         }
-
         .project-title p {
             margin-top: 10px;
             font-size: 18px;
@@ -55,7 +67,6 @@
             left: 30px;
             z-index: 3;
         }
-
         .logo img {
             height: 60px;
             background: white;
@@ -63,29 +74,54 @@
             border-radius: 5px;
         }
 
-        /* ===== PORTAL SECTION ===== */
-        .portal {
-            padding: 50px;
+        /* ===== LOGIN SECTION ===== */
+        .login-box {
+            text-align: center;
+            padding: 40px;
+        }
+        input {
+            padding: 12px;
+            width: 260px;
+            border-radius: 5px;
+            border: none;
+        }
+        button {
+            padding: 12px 25px;
+            background-color: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #1d4ed8;
         }
 
+        /* ===== PORTAL SECTION ===== */
+        .portal {
+            display: none;
+            padding: 50px;
+        }
         .container {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 50px;
         }
-
         .card {
             background-color: #1e293b;
             padding: 30px;
             border-radius: 12px;
+            transition: 0.3s;
         }
-
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+        }
         .card h2 {
             text-align: center;
             border-bottom: 1px solid #334155;
             padding-bottom: 15px;
         }
-
         .link-btn {
             display: block;
             background-color: #2563eb;
@@ -96,55 +132,98 @@
             cursor: pointer;
             font-weight: bold;
         }
-
         .link-btn:hover {
             background-color: #1d4ed8;
+        }
+
+        /* ===== PROGRESS BAR ===== */
+        .progress {
+            background-color: #334155;
+            border-radius: 6px;
+            overflow: hidden;
+            height: 20px;
+            margin-top: 10px;
+        }
+        .progress-bar {
+            background-color: #22c55e;
+            height: 100%;
+            transition: width 0.5s ease;
         }
     </style>
 
     <script>
+        function login() {
+            var password = document.getElementById("password").value;
+            if (password === "csq.pts.int") {
+                document.getElementById("loginSection").style.display = "none";
+                document.getElementById("portalSection").style.display = "block";
+            } else {
+                alert("Wrong Password");
+            }
+        }
         function openLink(link) {
             window.open(link, "_blank");
         }
     </script>
-
 </head>
 
 <body>
 
+<!-- ===== NAVBAR ===== -->
+<nav>
+    <a href="#floor">Floor Bracket</a>
+    <a href="#facade">Facade</a>
+    <a href="#progress">Progress</a>
+</nav>
+
 <!-- ===== COVER ===== -->
 <div class="cover">
-
     <div class="logo">
         <img src="logo.jpg" alt="Company Logo">
     </div>
-
     <div class="project-title">
         <h1>LIC COURT SQUARE</h1>
         <p>45-03 23RD STREET, QUEENS, NY</p>
     </div>
+</div>
 
+<!-- ===== LOGIN ===== -->
+<div id="loginSection" class="login-box">
+    <h2>Secure Project Access</h2>
+    <input type="password" id="password" placeholder="Enter Password">
+    <br><br>
+    <button onclick="login()">Enter</button>
 </div>
 
 <!-- ===== PORTAL ===== -->
-<div class="portal">
+<div id="portalSection" class="portal">
 
     <div class="container">
 
         <!-- FLOOR BRACKET -->
-        <div class="card">
+        <div class="card" id="floor">
             <h2>FLOOR BRACKET</h2>
             <div class="link-btn" onclick="openLink('PUT_LEVEL01_LINK')">LEVEL 01</div>
+            <div class="progress"><div class="progress-bar" style="width:60%"></div></div>
+
             <div class="link-btn" onclick="openLink('PUT_LEVEL02_LINK')">LEVEL 02</div>
+            <div class="progress"><div class="progress-bar" style="width:20%"></div></div>
+
             <div class="link-btn" onclick="openLink('PUT_LEVEL03_LINK')">LEVEL 03</div>
+            <div class="progress"><div class="progress-bar" style="width:100%"></div></div>
         </div>
 
-        <!-- FABRICATIONS PROGRESS -->
-        <div class="card">
-            <h2>FABRICATIONS PROGRESS</h2>
-            <div class="link-btn" onclick="openLink('PUT_FAB_LEVEL01_LINK')">LEVEL 01</div>
-            <div class="link-btn" onclick="openLink('PUT_FAB_LEVEL02_LINK')">LEVEL 02</div>
-            <div class="link-btn" onclick="openLink('PUT_FAB_LEVEL03_LINK')">LEVEL 03</div>
+        <!-- FACADE -->
+        <div class="card" id="facade">
+            <h2>FACADE</h2>
+            <div class="link-btn" onclick="openLink('PUT_FACADE_LEVEL01_LINK')">LEVEL 01</div>
+            <div class="progress"><div class="progress-bar" style="width:40%"></div></div>
+
+            <div class="link-btn" onclick="openLink('PUT_FACADE_LEVEL02_LINK')">LEVEL 02</div>
+            <div class="progress"><div class="progress-bar" style="width:10%"></div></div>
+
+            <div class="link-btn" onclick="openLink('PUT_FACADE_LEVEL03_LINK')">LEVEL 03</div>
+            <div class="progress"><div class="progress-bar" style="width:80%"></div></div>
         </div>
 
     </div>
