@@ -158,7 +158,9 @@ async function loadData() {
 
     const categories = {};
     data.forEach(row => {
+        if (row.length < 4) return; // skip incomplete rows
         const [category, sub, branch, link] = row;
+        if (!category) return; // skip empty
         if (!categories[category]) categories[category] = [];
         categories[category].push({ sub, branch, link });
     });
@@ -182,8 +184,7 @@ async function loadData() {
             }
             btn.textContent = label || "Link";
 
-            // Check if link is valid
-            if (item.link && item.link.trim() !== "" && item.link.indexOf("paste link here") === -1) {
+            if (item.link && item.link.trim() !== "" && !item.link.toLowerCase().includes("paste link here")) {
                 btn.onclick = () => window.open(item.link, "_blank");
             } else {
                 const msg = document.createElement("div");
