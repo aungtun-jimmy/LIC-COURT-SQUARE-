@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>LIC COURT SQUARE - CSQ Portal</title>
+    <title>Peterson International LLC - CSQ Portal</title>
     <style>
         body {
             margin: 0;
@@ -10,23 +10,15 @@
             color: #333;
         }
 
-        nav {
-            background-color: rgba(255,255,255,0.9);
-            padding: 15px;
+        /* Company Header */
+        header {
+            background-color: rgba(255,255,255,0.95);
+            padding: 20px;
             text-align: center;
-            position: sticky;
-            top: 0;
-            z-index: 10;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-        }
-        nav a {
-            color: #1e3c72;
-            margin: 0 15px;
-            text-decoration: none;
+            font-size: 24px;
             font-weight: bold;
-        }
-        nav a:hover {
-            color: #2a5298;
+            color: #1e3c72;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
         }
 
         .cover {
@@ -96,6 +88,7 @@
             padding-bottom: 10px;
             position: relative;
             color: #1e3c72;
+            text-transform: uppercase; /* force titles to CAPITAL */
         }
         .card h2::after {
             content: "▼"; /* arrow down */
@@ -149,12 +142,9 @@
 
 <body>
 
-<nav>
-    <a href="#floor">Floor Bracket</a>
-    <a href="#progress">Fabrication Progress</a>
-    <a href="#bim-cmi">BIM Model - CMI</a>
-    <a href="#bim-pts">BIM Model - PTS</a>
-</nav>
+<header>
+    Peterson International LLC
+</header>
 
 <div class="cover">
     <div class="logo">
