@@ -6,7 +6,7 @@
         body {
             margin: 0;
             font-family: "Segoe UI", Arial, sans-serif;
-            background: linear-gradient(135deg, #1e3c72, #2a5298); /* professional gradient */
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
             color: #333;
         }
 
@@ -91,7 +91,7 @@
             text-transform: uppercase; /* force titles to CAPITAL */
         }
         .card h2::after {
-            content: "▼"; /* arrow down */
+            content: "▼";
             position: absolute;
             right: 10px;
             top: 50%;
@@ -101,7 +101,7 @@
             transition: transform 0.3s;
         }
         .card.open h2::after {
-            transform: translateY(-50%) rotate(180deg); /* arrow up when open */
+            transform: translateY(-50%) rotate(180deg);
         }
         .card-content {
             display: none;
@@ -216,7 +216,6 @@ async function loadData() {
             content.appendChild(btn);
         });
 
-        // Toggle open/close on click
         card.querySelector("h2").onclick = () => {
             card.classList.toggle("open");
         };
