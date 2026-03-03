@@ -6,7 +6,7 @@
         body {
             margin: 0;
             font-family: "Segoe UI", Arial, sans-serif;
-            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            background-color: #f5f7fa; /* light corporate background */
             color: #333;
             display: flex;
             flex-direction: column;
@@ -14,17 +14,17 @@
         }
 
         header {
-            background-color: rgba(255,255,255,0.95);
+            background-color: #1e3c72;
             padding: 20px;
             text-align: center;
             font-size: 24px;
             font-weight: bold;
-            color: #1e3c72;
+            color: #ffffff;
             box-shadow: 0 2px 6px rgba(0,0,0,0.1);
         }
 
         .cover {
-            height: 250px;
+            height: 220px;
             background: url('cover.png') center/cover no-repeat;
             position: relative;
             display: flex;
@@ -35,7 +35,7 @@
             content: "";
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(0,0,0,0.45);
+            background: rgba(0,0,0,0.35);
         }
         .project-title {
             position: relative;
@@ -45,22 +45,22 @@
         }
         .project-title h1 {
             margin: 0;
-            font-size: 36px;
+            font-size: 32px;
             letter-spacing: 2px;
         }
         .project-title p {
-            margin-top: 8px;
-            font-size: 16px;
+            margin-top: 6px;
+            font-size: 15px;
         }
 
         .logo {
             position: absolute;
-            top: 20px;
-            left: 30px;
+            top: 15px;
+            left: 25px;
             z-index: 3;
         }
         .logo img {
-            height: 60px;
+            height: 55px;
             background: white;
             padding: 5px;
             border-radius: 5px;
@@ -73,25 +73,25 @@
         .container {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 30px;
+            gap: 25px;
         }
         .card {
             background-color: #ffffff;
             padding: 20px;
-            border-radius: 12px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.08);
             transition: 0.3s;
         }
         .card h2 {
             margin: 0;
-            font-size: 20px;
+            font-size: 18px;
             cursor: pointer;
             text-align: left;
             border-bottom: 1px solid #ddd;
-            padding-bottom: 10px;
+            padding-bottom: 8px;
             position: relative;
             color: #1e3c72;
-            text-transform: uppercase;
+            text-transform: uppercase; /* force titles to CAPITAL */
         }
         .card h2::after {
             content: "▼";
@@ -99,7 +99,7 @@
             right: 10px;
             top: 50%;
             transform: translateY(-50%);
-            font-size: 16px;
+            font-size: 14px;
             color: #1e3c72;
             transition: transform 0.3s;
         }
@@ -108,7 +108,7 @@
         }
         .card-content {
             display: none;
-            margin-top: 10px;
+            margin-top: 8px;
         }
         .card.open .card-content {
             display: block;
@@ -117,8 +117,8 @@
             display: block;
             background-color: #2563eb;
             color: white;
-            padding: 12px;
-            margin: 12px 0;
+            padding: 10px;
+            margin: 10px 0;
             text-align: center;
             border-radius: 6px;
             cursor: pointer;
@@ -130,17 +130,17 @@
         }
         .no-link {
             color: #f87171;
-            font-size: 14px;
+            font-size: 13px;
             text-align: center;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
 
         footer {
-            background-color: rgba(255,255,255,0.95);
+            background-color: #1e3c72;
             text-align: center;
-            padding: 15px;
-            font-size: 14px;
-            color: #1e3c72;
+            padding: 12px;
+            font-size: 13px;
+            color: #ffffff;
             box-shadow: 0 -2px 6px rgba(0,0,0,0.1);
         }
 
@@ -173,7 +173,7 @@
 </div>
 
 <footer>
-    © Peterson International LLC – All Rights Reserved | Contact: info@petersonintl.com
+    © Peterson International LLC – All Rights Reserved
 </footer>
 
 <script>
