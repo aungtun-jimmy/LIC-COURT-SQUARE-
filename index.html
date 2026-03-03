@@ -80,18 +80,24 @@
         }
         .card {
             background-color: #1e293b;
-            padding: 30px;
+            padding: 20px;
             border-radius: 12px;
             transition: 0.3s;
         }
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 15px rgba(0,0,0,0.3);
-        }
         .card h2 {
+            margin: 0;
+            font-size: 20px;
+            cursor: pointer;
             text-align: center;
             border-bottom: 1px solid #334155;
-            padding-bottom: 15px;
+            padding-bottom: 10px;
+        }
+        .card-content {
+            display: none; /* hidden by default */
+            margin-top: 10px;
+        }
+        .card:hover .card-content {
+            display: block; /* show on hover */
         }
         .link-btn {
             display: block;
@@ -174,6 +180,9 @@ async function loadData() {
         card.id = category.toLowerCase().replace(/\s+/g, "-");
         card.innerHTML = `<h2>${category}</h2>`;
 
+        const content = document.createElement("div");
+        content.className = "card-content";
+
         categories[category].forEach(item => {
             const btn = document.createElement("div");
             btn.className = "link-btn";
@@ -190,14 +199,15 @@ async function loadData() {
                 const msg = document.createElement("div");
                 msg.className = "no-link";
                 msg.textContent = "No link yet";
-                card.appendChild(msg);
+                content.appendChild(msg);
                 btn.style.backgroundColor = "#475569"; // greyed out
                 btn.style.cursor = "not-allowed";
             }
 
-            card.appendChild(btn);
+            content.appendChild(btn);
         });
 
+        card.appendChild(content);
         container.appendChild(card);
     }
 }
