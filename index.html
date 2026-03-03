@@ -1,19 +1,22 @@
 <!DOCTYPE html>
 <html>
-<head> , <link rel="manifest" href="manifest.json">
+<head>
   <title>Peterson International LLC - CSQ Portal</title>
+  <!-- Link to manifest for PWA -->
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#006d77">
   <style>
     body {
       margin: 0;
       font-family: "Roboto", Arial, sans-serif;
-      background-color: #eceff1;   /* soft light gray */
-      color: #2c3e50;              /* dark slate text */
+      background-color: #eceff1;
+      color: #2c3e50;
       display: flex;
       flex-direction: column;
       min-height: 100vh;
     }
     header {
-      background-color: #006d77;   /* professional teal */
+      background-color: #006d77;
       padding: 20px;
       text-align: center;
       font-size: 26px;
@@ -54,7 +57,7 @@
       padding: 20px;
     }
     .card {
-      background-color: #f9f9f9;   /* softer off-white */
+      background-color: #f9f9f9;
       margin: 15px 0;
       border-radius: 8px;
       box-shadow: 0 2px 6px rgba(0,0,0,0.1);
@@ -65,20 +68,18 @@
       margin: 0;
       font-size: 22px;
       font-weight: bold;
-      color: #006d77;              /* teal text */
+      color: #006d77;
       text-transform: uppercase;
       cursor: pointer;
       position: relative;
       padding: 12px 16px;
-
-      /* Deep 3D effect */
       background-color: #f9f9f9;
       border: 1px solid #ccc;
       border-radius: 6px;
       box-shadow: 
-        4px 4px 10px rgba(0,0,0,0.35),   /* stronger outer shadow */
-        inset -3px -3px 6px rgba(255,255,255,0.8), /* top-left highlight */
-        inset 3px 3px 6px rgba(0,0,0,0.25);        /* bottom-right inner shadow */
+        4px 4px 10px rgba(0,0,0,0.35),
+        inset -3px -3px 6px rgba(255,255,255,0.8),
+        inset 3px 3px 6px rgba(0,0,0,0.25);
       transition: transform 0.2s, box-shadow 0.2s;
     }
     .card h2:hover {
@@ -116,8 +117,6 @@
       text-align: center;
       border-radius: 6px;
       text-decoration: none;
-
-      /* Deep 3D effect */
       box-shadow: 
         4px 4px 10px rgba(0,0,0,0.35),
         inset -3px -3px 6px rgba(255,255,255,0.5),
@@ -133,7 +132,7 @@
         inset 3px 3px 6px rgba(0,0,0,0.25);
     }
     footer {
-      background-color: #006d77;   /* teal footer */
+      background-color: #006d77;
       text-align: center;
       padding: 14px;
       font-size: 13px;
@@ -208,6 +207,7 @@ async function loadData() {
         btn.textContent = label;
         btn.href = item.linkNotes;
         btn.target = "_blank";
+        btn.rel = "noopener noreferrer";
         content.appendChild(btn);
       } else {
         const btn = document.createElement("div");
@@ -230,6 +230,14 @@ async function loadData() {
 loadData();
 </script>
 
-<script> if ("serviceWorker" in navigator) {   navigator.serviceWorker.register("service-worker.js"); } </script> ,</body>
-</html>
+<!-- Register service worker for PWA -->
+<script>
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("service-worker.js")
+    .then(() => console.log("Service Worker registered"))
+    .catch(err => console.error("Service Worker failed:", err));
+}
+</script>
 
+</body>
+</html>
