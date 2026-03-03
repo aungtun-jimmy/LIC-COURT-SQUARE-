@@ -5,31 +5,32 @@
     <style>
         body {
             margin: 0;
-            font-family: Arial, sans-serif;
-            background-color: #0f172a;
-            color: white;
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: linear-gradient(135deg, #1e3c72, #2a5298); /* professional gradient */
+            color: #333;
         }
 
         nav {
-            background-color: #1e293b;
+            background-color: rgba(255,255,255,0.9);
             padding: 15px;
             text-align: center;
             position: sticky;
             top: 0;
             z-index: 10;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
         }
         nav a {
-            color: white;
+            color: #1e3c72;
             margin: 0 15px;
             text-decoration: none;
             font-weight: bold;
         }
         nav a:hover {
-            color: #2563eb;
+            color: #2a5298;
         }
 
         .cover {
-            height: 300px;
+            height: 250px;
             background: url('cover.png') center/cover no-repeat;
             position: relative;
             display: flex;
@@ -40,21 +41,22 @@
             content: "";
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(0,0,0,0.55);
+            background: rgba(0,0,0,0.45);
         }
         .project-title {
             position: relative;
             text-align: center;
             z-index: 2;
+            color: white;
         }
         .project-title h1 {
             margin: 0;
-            font-size: 40px;
+            font-size: 36px;
             letter-spacing: 2px;
         }
         .project-title p {
-            margin-top: 10px;
-            font-size: 18px;
+            margin-top: 8px;
+            font-size: 16px;
         }
 
         .logo {
@@ -71,37 +73,42 @@
         }
 
         .portal {
-            padding: 50px;
+            padding: 40px;
         }
         .container {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 40px;
+            gap: 30px;
         }
         .card {
-            background-color: #1e293b;
+            background-color: #ffffff;
             padding: 20px;
             border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
             transition: 0.3s;
         }
         .card h2 {
             margin: 0;
             font-size: 20px;
             cursor: pointer;
-            text-align: center;
-            border-bottom: 1px solid #334155;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
             padding-bottom: 10px;
             position: relative;
+            color: #1e3c72;
         }
         .card h2::after {
             content: "▼"; /* arrow down */
             position: absolute;
             right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
             font-size: 16px;
+            color: #1e3c72;
             transition: transform 0.3s;
         }
         .card.open h2::after {
-            transform: rotate(180deg); /* arrow up when open */
+            transform: translateY(-50%) rotate(180deg); /* arrow up when open */
         }
         .card-content {
             display: none;
@@ -113,12 +120,14 @@
         .link-btn {
             display: block;
             background-color: #2563eb;
+            color: white;
             padding: 12px;
             margin: 12px 0;
             text-align: center;
             border-radius: 6px;
             cursor: pointer;
             font-weight: bold;
+            text-decoration: none;
         }
         .link-btn:hover {
             background-color: #1d4ed8;
@@ -209,7 +218,8 @@ async function loadData() {
                 msg.className = "no-link";
                 msg.textContent = "No link yet";
                 content.appendChild(msg);
-                btn.style.backgroundColor = "#475569";
+                btn.style.backgroundColor = "#ccc";
+                btn.style.color = "#666";
                 btn.style.cursor = "not-allowed";
             }
 
