@@ -14,7 +14,7 @@
         }
 
         header {
-            background-color: #1e3c72;
+            background-color: #1e3c72; /* lighter blue than background */
             padding: 20px;
             text-align: center;
             font-size: 26px;
@@ -24,7 +24,6 @@
             box-shadow: 0 2px 6px rgba(0,0,0,0.4);
         }
 
-        /* Cover section */
         .cover {
             height: 260px;
             background: url('cover.png') center/cover no-repeat;
@@ -95,12 +94,12 @@
             border-bottom: 1px solid #2e3b55;
             padding-bottom: 10px;
             position: relative;
-            color: #ffffff;
+            color: #ffcc00; /* gold/yellow for contrast */
             text-transform: uppercase;
             /* 3D text effect */
             text-shadow: 2px 2px 4px rgba(0,0,0,0.8), 
-                         -1px -1px 0 #1e3c72, 
-                         1px 1px 0 #1e3c72;
+                         -1px -1px 0 #333, 
+                         1px 1px 0 #333;
         }
         .card h2::after {
             content: "▶";
@@ -146,7 +145,7 @@
         }
 
         footer {
-            background-color: #1e3c72;
+            background-color: #2a3f5f; /* different shade than header and background */
             text-align: center;
             padding: 14px;
             font-size: 13px;
@@ -218,14 +217,14 @@ async function loadData() {
         content.className = "card-content";
 
         categories[category].forEach(item => {
+            let label = "";
+            if (item.sub && item.sub.trim() !== "" && item.sub !== "–") label += item.sub;
+            if (item.branch && item.branch.trim() !== "" && item.branch !== "–") {
+                label += label ? " – " + item.branch : item.branch;
+            }
             if (item.link && item.link.trim() !== "" && !item.link.toLowerCase().includes("paste link here")) {
                 const btn = document.createElement("a");
                 btn.className = "link-btn";
-                let label = "";
-                if (item.sub && item.sub !== "–") label += item.sub;
-                if (item.branch && item.branch !== "–") {
-                    label += label ? " – " + item.branch : item.branch;
-                }
                 btn.textContent = label || "Link";
                 btn.href = item.link;
                 btn.target = "_blank";
@@ -238,7 +237,7 @@ async function loadData() {
 
                 const btn = document.createElement("div");
                 btn.className = "link-btn";
-                btn.textContent = (item.sub || item.branch) || "Link";
+                btn.textContent = label || "Link";
                 btn.style.backgroundColor = "#444";
                 btn.style.color = "#999";
                 btn.style.cursor = "not-allowed";
