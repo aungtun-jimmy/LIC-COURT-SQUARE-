@@ -10,7 +10,6 @@
             color: #333;
         }
 
-        /* Company Header */
         header {
             background-color: rgba(255,255,255,0.95);
             padding: 20px;
@@ -88,7 +87,7 @@
             padding-bottom: 10px;
             position: relative;
             color: #1e3c72;
-            text-transform: uppercase; /* force titles to CAPITAL */
+            text-transform: uppercase;
         }
         .card h2::after {
             content: "▼";
@@ -192,28 +191,32 @@ async function loadData() {
         content.className = "card-content";
 
         categories[category].forEach(item => {
-            const btn = document.createElement("div");
-            btn.className = "link-btn";
-            let label = "";
-            if (item.sub && item.sub !== "–") label += item.sub;
-            if (item.branch && item.branch !== "–") {
-                label += label ? " – " + item.branch : item.branch;
-            }
-            btn.textContent = label || "Link";
-
             if (item.link && item.link.trim() !== "" && !item.link.toLowerCase().includes("paste link here")) {
-                btn.onclick = () => window.open(item.link, "_blank");
+                const btn = document.createElement("a");
+                btn.className = "link-btn";
+                let label = "";
+                if (item.sub && item.sub !== "–") label += item.sub;
+                if (item.branch && item.branch !== "–") {
+                    label += label ? " – " + item.branch : item.branch;
+                }
+                btn.textContent = label || "Link";
+                btn.href = item.link;
+                btn.target = "_blank";
+                content.appendChild(btn);
             } else {
                 const msg = document.createElement("div");
                 msg.className = "no-link";
                 msg.textContent = "No link yet";
                 content.appendChild(msg);
+
+                const btn = document.createElement("div");
+                btn.className = "link-btn";
+                btn.textContent = (item.sub || item.branch) || "Link";
                 btn.style.backgroundColor = "#ccc";
                 btn.style.color = "#666";
                 btn.style.cursor = "not-allowed";
+                content.appendChild(btn);
             }
-
-            content.appendChild(btn);
         });
 
         card.querySelector("h2").onclick = () => {
