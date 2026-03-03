@@ -96,10 +96,7 @@
             position: relative;
             color: #00b4d8; /* teal category titles */
             text-transform: uppercase;
-            /* 3D text effect */
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.8),
-                         -1px -1px 0 #0d1b2a,
-                         1px 1px 0 #0d1b2a;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
         }
         .card h2::after {
             content: "▶";
@@ -250,3 +247,10 @@ async function loadData() {
 
         card.appendChild(content);
         container.appendChild(card);
+    }
+}
+loadData();
+</script>
+
+</body>
+</html>
