@@ -6,19 +6,20 @@
     body {
       margin: 0;
       font-family: "Roboto", Arial, sans-serif;
-      background-color: #2c2c2c;   /* charcoal background */
-      color: #e0e0e0;              /* light text */
+      background-color: #0d1b2a;   /* midnight blue background */
+      color: #e0e0e0;              /* light silver text */
       display: flex;
       flex-direction: column;
       min-height: 100vh;
     }
     header {
-      background-color: #006400;   /* deep emerald */
+      background-color: #1b263b;   /* deep navy header */
       padding: 20px;
       text-align: center;
       font-size: 26px;
       font-weight: bold;
-      color: #ffffff;
+      color: #e0e0e0;
+      border-bottom: 2px solid #778da9; /* silver accent line */
     }
     .cover {
       height: 220px;
@@ -33,7 +34,7 @@
       z-index: 2;
       color: #ffffff;
       text-align: center;
-      background: rgba(0,100,0,0.6); /* emerald overlay for readability */
+      background: rgba(27,38,59,0.6); /* dark blue overlay for readability */
       padding: 12px 20px;
       border-radius: 6px;
     }
@@ -50,21 +51,21 @@
       border-radius: 5px;
     }
     .portal {
-      flex: 1; /* ensures footer stays at bottom */
+      flex: 1;
       padding: 20px;
     }
     .card {
-      background-color: #3a3a3a;   /* lighter charcoal cards */
+      background-color: #1b263b;   /* dark navy cards */
       margin: 15px 0;
       padding: 15px;
       border-radius: 8px;
       box-shadow: 0 2px 6px rgba(0,0,0,0.4);
-      border: 1px solid #444;
+      border: 1px solid #415a77;   /* silver border */
     }
     .card h2 {
       margin: 0;
       font-size: 20px;
-      color: #00ff88;              /* bright emerald titles */
+      color: #778da9;              /* silver titles */
       text-transform: uppercase;
       cursor: pointer;
       position: relative;
@@ -89,8 +90,8 @@
     }
     .link-btn {
       display: block;
-      background-color: #00ff88;   /* emerald buttons */
-      color: #2c2c2c;
+      background-color: #778da9;   /* silver buttons */
+      color: #0d1b2a;
       font-weight: bold;
       padding: 10px;
       margin: 6px 0;
@@ -99,15 +100,17 @@
       text-decoration: none;
     }
     .link-btn:hover {
-      background-color: #00cc66;
+      background-color: #e0e0e0;
+      color: #0d1b2a;
     }
     footer {
-      background-color: #111111;   /* dark footer */
+      background-color: #1b263b;   /* dark footer */
       text-align: center;
       padding: 14px;
       font-size: 13px;
-      color: #aaaaaa;
+      color: #778da9;
       margin-top: auto; /* pushes footer to bottom */
+      border-top: 2px solid #778da9;
     }
   </style>
 </head>
@@ -182,7 +185,7 @@ async function loadData() {
         const btn = document.createElement("div");
         btn.className = "link-btn";
         btn.textContent = label + " (No link)";
-        btn.style.backgroundColor = "#444";
+        btn.style.backgroundColor = "#333";
         btn.style.color = "#999";
         content.appendChild(btn);
       }
