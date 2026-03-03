@@ -75,7 +75,7 @@
         }
         .container {
             display: grid;
-            grid-template-columns: 1fr 1fr; /* two columns */
+            grid-template-columns: 1fr 1fr;
             gap: 40px;
         }
         .card {
@@ -93,11 +93,11 @@
             padding-bottom: 10px;
         }
         .card-content {
-            display: none; /* hidden by default */
+            display: none;
             margin-top: 10px;
         }
-        .card:hover .card-content {
-            display: block; /* show on hover */
+        .card.open .card-content {
+            display: block;
         }
         .link-btn {
             display: block;
@@ -113,7 +113,7 @@
             background-color: #1d4ed8;
         }
         .no-link {
-            color: #f87171; /* red text */
+            color: #f87171;
             font-size: 14px;
             text-align: center;
             margin-bottom: 10px;
@@ -147,9 +147,7 @@
 </div>
 
 <div id="portalSection" class="portal">
-    <div class="container" id="cardContainer">
-        <!-- Cards will be injected here -->
-    </div>
+    <div class="container" id="cardContainer"></div>
 </div>
 
 <script>
@@ -164,9 +162,9 @@ async function loadData() {
 
     const categories = {};
     data.forEach(row => {
-        if (row.length < 4) return; // skip incomplete rows
+        if (row.length < 4) return;
         const [category, sub, branch, link] = row;
-        if (!category) return; // skip empty category rows
+        if (!category) return;
         if (!categories[category]) categories[category] = [];
         categories[category].push({ sub, branch, link });
     });
@@ -200,18 +198,22 @@ async function loadData() {
                 msg.className = "no-link";
                 msg.textContent = "No link yet";
                 content.appendChild(msg);
-                btn.style.backgroundColor = "#475569"; // greyed out
+                btn.style.backgroundColor = "#475569";
                 btn.style.cursor = "not-allowed";
             }
 
             content.appendChild(btn);
         });
 
+        // Toggle open/close on click
+        card.querySelector("h2").onclick = () => {
+            card.classList.toggle("open");
+        };
+
         card.appendChild(content);
         container.appendChild(card);
     }
 }
-
 loadData();
 </script>
 
