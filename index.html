@@ -6,20 +6,19 @@
     body {
       margin: 0;
       font-family: "Roboto", Arial, sans-serif;
-      background-color: #f4f6f9;   /* light neutral background */
-      color: #1c1c1c;
+      background-color: #2c2c2c;   /* charcoal background */
+      color: #e0e0e0;              /* light text */
       display: flex;
       flex-direction: column;
       min-height: 100vh;
     }
     header {
-      background-color: #004d40;   /* dark green header */
+      background-color: #006400;   /* emerald green header */
       padding: 20px;
       text-align: center;
       font-size: 26px;
       font-weight: bold;
       color: #ffffff;
-      border-bottom: 3px solid #a5d6a7; /* soft green accent line */
     }
     .cover {
       height: 220px;
@@ -55,19 +54,19 @@
       padding: 20px;
     }
     .card {
-      background-color: #f9f9f9;   /* softer off-white */
+      background-color: #3a3a3a;   /* lighter charcoal cards */
       margin: 15px 0;
       border-radius: 8px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      border: 1px solid #ddd;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+      border: 1px solid #444;
       overflow: hidden;
     }
     .card h2 {
       margin: 0;
       font-size: 22px;
       font-weight: bold;
-      background-color: #004d40;   /* dark green category box */
-      color: #ffffff;              /* white text */
+      background-color: #00ff88;   /* bright emerald category box */
+      color: #2c2c2c;              /* dark text on emerald */
       padding: 12px;
       text-transform: uppercase;
       cursor: pointer;
@@ -93,8 +92,8 @@
     }
     .link-btn {
       display: block;
-      background-color: #004d40;   /* dark green buttons */
-      color: #ffffff;
+      background-color: #00ff88;   /* emerald buttons */
+      color: #2c2c2c;
       font-weight: bold;
       padding: 10px;
       margin: 6px 0;
@@ -103,16 +102,16 @@
       text-decoration: none;
     }
     .link-btn:hover {
-      background-color: #00695c;
+      background-color: #00cc66;
     }
     footer {
-      background-color: #004d40;   /* dark green footer */
+      background-color: #006400;   /* emerald footer */
       text-align: center;
       padding: 14px;
       font-size: 13px;
       color: #a5d6a7;              /* soft green text */
       margin-top: auto;
-      border-top: 3px solid #a5d6a7;
+      border-top: 3px solid #00ff88;
     }
   </style>
 </head>
@@ -187,8 +186,8 @@ async function loadData() {
         const btn = document.createElement("div");
         btn.className = "link-btn";
         btn.textContent = label + " (No link)";
-        btn.style.backgroundColor = "#555";
-        btn.style.color = "#ccc";
+        btn.style.backgroundColor = "#444";
+        btn.style.color = "#999";
         content.appendChild(btn);
       }
     });
