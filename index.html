@@ -1,253 +1,148 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Peterson International LLC - CSQ Portal</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: "Roboto", "Segoe UI", Arial, sans-serif;
-            background-color: #2f3e46; /* slate gray background */
-            color: #e0e0e0;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
-
-        header {
-            background-color: #1b4d5f; /* deep teal header */
-            padding: 20px;
-            text-align: center;
-            font-size: 26px;
-            font-weight: bold;
-            color: #ffffff;
-            letter-spacing: 1px;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.4);
-        }
-
-        .cover {
-            height: 240px;
-            background: url('cover.png') center/cover no-repeat;
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .cover::after {
-            content: "";
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(0,0,0,0.5);
-        }
-        .project-title {
-            position: relative;
-            text-align: center;
-            z-index: 2;
-            color: #ffffff;
-        }
-        .project-title h1 {
-            margin: 0;
-            font-size: 34px;
-            letter-spacing: 2px;
-            text-shadow: 2px 2px 6px rgba(0,0,0,0.7);
-        }
-        .project-title p {
-            margin-top: 8px;
-            font-size: 16px;
-        }
-
-        .logo {
-            position: absolute;
-            top: 20px;
-            left: 30px;
-            z-index: 3;
-        }
-        .logo img {
-            height: 60px;
-            background: white;
-            padding: 5px;
-            border-radius: 5px;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-        }
-
-        .portal {
-            padding: 40px;
-            flex: 1;
-        }
-        .container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
-        }
-        .card {
-            background-color: #354f52; /* medium gray card */
-            padding: 20px;
-            border-radius: 12px;
-            border-top: 4px solid #1b4d5f;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.4);
-            transition: 0.3s;
-        }
-        .card h2 {
-            margin: 0;
-            font-size: 20px;
-            cursor: pointer;
-            text-align: left;
-            border-bottom: 1px solid #52796f;
-            padding-bottom: 10px;
-            position: relative;
-            color: #00b4d8; /* teal category titles */
-            text-transform: uppercase;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
-        }
-        .card h2::after {
-            content: "▶";
-            position: absolute;
-            right: 10px;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 14px;
-            color: #ffffff;
-            transition: transform 0.3s;
-        }
-        .card.open h2::after {
-            transform: translateY(-50%) rotate(90deg);
-        }
-        .card-content {
-            display: none;
-            margin-top: 10px;
-        }
-        .card.open .card-content {
-            display: block;
-        }
-        .link-btn {
-            display: block;
-            background-color: #00b4d8;
-            color: white;
-            padding: 12px;
-            margin: 12px 0;
-            text-align: center;
-            border-radius: 6px;
-            cursor: pointer;
-            font-weight: bold;
-            text-decoration: none;
-            box-shadow: 0 3px 6px rgba(0,0,0,0.5);
-        }
-        .link-btn:hover {
-            background-color: #0096c7;
-        }
-        .no-link {
-            color: #f87171;
-            font-size: 14px;
-            text-align: center;
-            margin-bottom: 10px;
-        }
-
-        footer {
-            background-color: #1c2b2d; /* charcoal footer */
-            text-align: center;
-            padding: 14px;
-            font-size: 13px;
-            color: #ffffff;
-            box-shadow: 0 -2px 6px rgba(0,0,0,0.4);
-        }
-
-        @media (max-width: 768px) {
-            .container {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+  <title>Peterson International LLC - CSQ Portal</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Roboto", Arial, sans-serif;
+      background-color: #2f3e46; /* slate gray background */
+      color: #e0e0e0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    header {
+      background-color: #1b4d5f; /* teal header */
+      padding: 20px;
+      text-align: center;
+      font-size: 26px;
+      font-weight: bold;
+      color: #ffffff;
+    }
+    .portal {
+      padding: 20px;
+      flex: 1;
+    }
+    .card {
+      background-color: #354f52;
+      margin: 15px 0;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+    }
+    .card h2 {
+      margin: 0;
+      font-size: 20px;
+      color: #00b4d8; /* teal category titles */
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+    .card-content {
+      margin-top: 10px;
+    }
+    .link-btn {
+      display: block;
+      background-color: #00b4d8;
+      color: white;
+      padding: 10px;
+      margin: 6px 0;
+      text-align: center;
+      border-radius: 6px;
+      text-decoration: none;
+    }
+    .link-btn:hover {
+      background-color: #0096c7;
+    }
+    footer {
+      background-color: #1c2b2d; /* charcoal footer */
+      text-align: center;
+      padding: 14px;
+      font-size: 13px;
+      color: #ffffff;
+    }
+    pre {
+      background:#1c2b2d;
+      padding:10px;
+      border-radius:6px;
+      overflow:auto;
+      font-size:12px;
+    }
+  </style>
 </head>
-
 <body>
 
 <header>
-    Peterson International LLC
+  Peterson International LLC
 </header>
 
-<div class="cover">
-    <div class="logo">
-        <img src="logo.jpg" alt="Company Logo">
-    </div>
-    <div class="project-title">
-        <h1>LIC COURT SQUARE</h1>
-        <p>45-03 23RD STREET, QUEENS, NY</p>
-    </div>
-</div>
-
-<div id="portalSection" class="portal">
-    <div class="container" id="cardContainer"></div>
+<div class="portal">
+  <h1>Debug Mode – Raw CSV Data</h1>
+  <pre id="rawData">Loading...</pre>
+  <h2>Categories</h2>
+  <div id="cardContainer"></div>
 </div>
 
 <footer>
-    © Peterson International LLC – All Rights Reserved
+  © Peterson International LLC – All Rights Reserved
 </footer>
 
 <script>
 async function loadData() {
-    const url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSvVKOko1YWaiKsOoMDcmJi3TTVsUN4KgpUyDvpzK1fdBBqV_X4YjLa7vcBXLIiDPVcujqp9cCK7125/pub?output=csv"; 
+  const url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSvVKOko1YWaiKsOoMDcmJi3TTVsUN4KgpUyDvpzK1fdBBqV_X4YjLa7vcBXLIiDPVcujqp9cCK7125/pub?output=csv"; 
+  const response = await fetch(url);
+  const text = await response.text();
 
-    const response = await fetch(url);
-    const text = await response.text();
+  // Show raw CSV for debugging
+  document.getElementById("rawData").textContent = text;
 
-    const rows = text.split("\n").map(r => r.split(","));
-    const data = rows.slice(1);
+  const rows = text.split("\n").map(r => r.split(","));
+  const data = rows.slice(1);
 
-    const categories = {};
-    data.forEach(row => {
-        if (row.length < 4) return;
-        const [category, sub, branch, link] = row.map(cell => cell.trim());
-        if (!category) return;
-        if (!categories[category]) categories[category] = [];
-        categories[category].push({ sub, branch, link });
+  const categories = {};
+  data.forEach(row => {
+    if (row.length < 4) return;
+    const [category, sub, branch, link] = row.map(cell => cell.trim());
+    if (!category) return;
+    if (!categories[category]) categories[category] = [];
+    categories[category].push({ sub, branch, link });
+  });
+
+  const container = document.getElementById("cardContainer");
+  container.innerHTML = "";
+
+  for (const category in categories) {
+    const card = document.createElement("div");
+    card.className = "card";
+    card.innerHTML = `<h2>${category}</h2>`;
+    const content = document.createElement("div");
+    content.className = "card-content";
+
+    categories[category].forEach(item => {
+      let label = "";
+      label += item.sub && item.sub !== "–" ? item.sub : "Sub";
+      label += item.branch && item.branch !== "–" ? " – " + item.branch : " – Branch";
+
+      if (item.link && item.link.trim() !== "" && !item.link.toLowerCase().includes("paste link here")) {
+        const btn = document.createElement("a");
+        btn.className = "link-btn";
+        btn.textContent = label;
+        btn.href = item.link;
+        btn.target = "_blank";
+        content.appendChild(btn);
+      } else {
+        const btn = document.createElement("div");
+        btn.className = "link-btn";
+        btn.textContent = label + " (No link)";
+        btn.style.backgroundColor = "#444";
+        btn.style.color = "#999";
+        content.appendChild(btn);
+      }
     });
 
-    const container = document.getElementById("cardContainer");
-    container.innerHTML = "";
-
-    for (const category in categories) {
-        const card = document.createElement("div");
-        card.className = "card";
-        card.id = category.toLowerCase().replace(/\s+/g, "-");
-        card.innerHTML = `<h2>${category}</h2>`;
-
-        const content = document.createElement("div");
-        content.className = "card-content";
-
-        categories[category].forEach(item => {
-            let label = "";
-            label += item.sub && item.sub !== "–" ? item.sub : "Sub";
-            label += item.branch && item.branch !== "–" ? " – " + item.branch : " – Branch";
-
-            if (item.link && item.link.trim() !== "" && !item.link.toLowerCase().includes("paste link here")) {
-                const btn = document.createElement("a");
-                btn.className = "link-btn";
-                btn.textContent = label;
-                btn.href = item.link;
-                btn.target = "_blank";
-                content.appendChild(btn);
-            } else {
-                const msg = document.createElement("div");
-                msg.className = "no-link";
-                msg.textContent = "No link yet";
-                content.appendChild(msg);
-
-                const btn = document.createElement("div");
-                btn.className = "link-btn";
-                btn.textContent = label;
-                btn.style.backgroundColor = "#444";
-                btn.style.color = "#999";
-                btn.style.cursor = "not-allowed";
-                content.appendChild(btn);
-            }
-        });
-
-        card.querySelector("h2").onclick = () => {
-            card.classList.toggle("open");
-        };
-
-        card.appendChild(content);
-        container.appendChild(card);
-    }
+    card.appendChild(content);
+    container.appendChild(card);
+  }
 }
 loadData();
 </script>
