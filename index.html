@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head> , <link rel="manifest" href="manifest.json">
   <title>Peterson International LLC - CSQ Portal</title>
   <style>
     body {
@@ -230,8 +230,6 @@ async function loadData() {
 loadData();
 </script>
 
-</body>
+<script> if ("serviceWorker" in navigator) {   navigator.serviceWorker.register("service-worker.js"); } </script> ,</body>
 </html>
-
-<link rel="manifest" href="manifest.json">
 
