@@ -6,14 +6,11 @@
     body {
       margin: 0;
       font-family: "Roboto", Arial, sans-serif;
-      background-color: #2f3e46; /* slate gray background */
+      background-color: #2f3e46;
       color: #e0e0e0;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
     }
     header {
-      background-color: #1b4d5f; /* teal header */
+      background-color: #1b4d5f;
       padding: 20px;
       text-align: center;
       font-size: 26px;
@@ -22,7 +19,6 @@
     }
     .portal {
       padding: 20px;
-      flex: 1;
     }
     .card {
       background-color: #354f52;
@@ -34,7 +30,7 @@
     .card h2 {
       margin: 0;
       font-size: 20px;
-      color: #00b4d8; /* teal category titles */
+      color: #00b4d8;
       text-transform: uppercase;
       cursor: pointer;
     }
@@ -55,18 +51,11 @@
       background-color: #0096c7;
     }
     footer {
-      background-color: #1c2b2d; /* charcoal footer */
+      background-color: #1c2b2d;
       text-align: center;
       padding: 14px;
       font-size: 13px;
       color: #ffffff;
-    }
-    pre {
-      background:#1c2b2d;
-      padding:10px;
-      border-radius:6px;
-      overflow:auto;
-      font-size:12px;
     }
   </style>
 </head>
@@ -77,9 +66,6 @@
 </header>
 
 <div class="portal">
-  <h1>Debug Mode – Raw CSV Data</h1>
-  <pre id="rawData">Loading...</pre>
-  <h2>Categories</h2>
   <div id="cardContainer"></div>
 </div>
 
@@ -93,19 +79,16 @@ async function loadData() {
   const response = await fetch(url);
   const text = await response.text();
 
-  // Show raw CSV for debugging
-  document.getElementById("rawData").textContent = text;
-
   const rows = text.split("\n").map(r => r.split(","));
   const data = rows.slice(1);
 
   const categories = {};
   data.forEach(row => {
     if (row.length < 4) return;
-    const [category, sub, branch, link] = row.map(cell => cell.trim());
+    const [category, subCategory, branchLevel, linkNotes] = row.map(cell => cell.trim());
     if (!category) return;
     if (!categories[category]) categories[category] = [];
-    categories[category].push({ sub, branch, link });
+    categories[category].push({ subCategory, branchLevel, linkNotes });
   });
 
   const container = document.getElementById("cardContainer");
@@ -120,14 +103,14 @@ async function loadData() {
 
     categories[category].forEach(item => {
       let label = "";
-      label += item.sub && item.sub !== "–" ? item.sub : "Sub";
-      label += item.branch && item.branch !== "–" ? " – " + item.branch : " – Branch";
+      label += item.subCategory && item.subCategory !== "–" ? item.subCategory : "Sub";
+      label += item.branchLevel && item.branchLevel !== "–" ? " – " + item.branchLevel : "";
 
-      if (item.link && item.link.trim() !== "" && !item.link.toLowerCase().includes("paste link here")) {
+      if (item.linkNotes && item.linkNotes.trim() !== "" && !item.linkNotes.toLowerCase().includes("paste link here")) {
         const btn = document.createElement("a");
         btn.className = "link-btn";
         btn.textContent = label;
-        btn.href = item.link;
+        btn.href = item.linkNotes;
         btn.target = "_blank";
         content.appendChild(btn);
       } else {
